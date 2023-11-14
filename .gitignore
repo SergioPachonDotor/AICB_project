@@ -1,0 +1,4 @@
+*.pdf
+*.fasta
+*.fastq
+__pycache__/
