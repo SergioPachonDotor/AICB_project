@@ -50,9 +50,9 @@ class CodeGenerator:
                 max_index = i
         if max_value <= 0:
             return 0
-        elif max_value < 1.5:
+        elif max_value < 1.2:
             return 1
-        elif max_value >= 1.5:
+        elif max_value >= 1.2:
             return max_index + 2
 
     def calculate_aa_scores_array(self, gene_RSCU:dict[str, list[float]]) -> dict[str, int]:

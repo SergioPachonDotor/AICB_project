@@ -89,14 +89,13 @@ class ChispitApp:
         
     def compare_pair_of_genomes(self, genome1:dict[str, list[int]], genome2:dict[str, list[int]]) -> float:
         shared_genomes:int= 0
-    
-    
         for k1,v1 in genome1.items():
             for k2, v2 in genome2.items():
                 
                 if k1 == k2:
                     contiguous_sum:int = (np.sum(v1) + np.sum(v2))
                     shared_genomes += contiguous_sum
+                    break
                     
         return shared_genomes
         
@@ -110,10 +109,10 @@ class ChispitApp:
                 if i != j:
                     total_genome_sum:int= 0
                     
-                    for v1 in genomes[i].values():
+                    for k1, v1 in genomes[i].items():
                         total_genome_sum += np.sum(v1)
                         
-                    for v2 in genomes[j].values():
+                    for k2, v2 in genomes[j].items():
                         total_genome_sum += np.sum(v2)
                         
                     shared_genomes = self.compare_pair_of_genomes(genomes[i], genomes[j])
@@ -121,7 +120,8 @@ class ChispitApp:
                     
         for i in tqdm(range(num_genomes)):
             for j in range(i, num_genomes):
-                result_matrix[i][j] = 1
+                if i == j:
+                    result_matrix[i][j] = 1
                 
         for i in tqdm(range(num_genomes)):
             for j in range(i):
@@ -159,7 +159,7 @@ class ChispitApp:
 if __name__ == '__main__':
     
     if len(sys.argv) != 3:
-        print("USage: python chispisApp.py <data_path> <output_name>")
+        print("Usage: python chispisApp.py <data_path> <output_name>")
         
     else:
         data_path:str = str(sys.argv[1])
