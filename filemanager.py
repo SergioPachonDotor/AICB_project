@@ -7,6 +7,7 @@ class FileManager:
         self.filenames:list[str]
         self.sequences_array:list[dict[str, str]]
         self.converted_genomes:list[list[GeneModel]]
+        self.genome_names:list[str]
 
     def get_file_path(self) -> str:
         return self.file_path
@@ -32,10 +33,18 @@ class FileManager:
     def get_sequences_array(self) -> list[dict[str, str]]:
         return self.sequences_array
         
+    def set_genome_names(self, genome_names:list[str]) -> None:
+        self.genome_names = genome_names
+        
+    def get_genome_names(self) -> list[str]:
+        return self.genome_names
+        
     def prepare_files_to_read(self) -> None:
         file_path:str = self.get_file_path()
         file_to_read:list[str] = os.listdir(file_path)
+        genome_names:list[str] = [os.path.splitext(os.path.basename(file_path))[0] for file_path in file_to_read]
         self.set_filenames(file_to_read)
+        self.set_genome_names(genome_names)
 
     def get_genes_from_file(self, file_path:str) -> dict[str, str]:
         genes_from_fasta:dict[str, str] = {}

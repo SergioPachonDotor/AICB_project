@@ -1,0 +1,4 @@
+		Albonectria_albosuccinea_ta_cds	Albonectria_albosuccinea_ta_cds1	Albonectria_albosuccinea_ta_cds2
+Albonectria_albosuccinea_ta_cds	1	1	1
+Albonectria_albosuccinea_ta_cds1	1	1	1
+Albonectria_albosuccinea_ta_cds2	1	1	1
